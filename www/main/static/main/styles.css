@@ -1,0 +1,8 @@
+body {
+	font-family: 'Montserrat', sans-serif;
+	background-color: red; 
+}
+table { border-collapse: collapse; width: 100%; cursor: default; }
+th, td { border-right: none; border-bottom: 1px solid black; padding-top: 10px; }
+legend {cursor: default;}
+.info tr:hover { background-color: #bfbfbf; }

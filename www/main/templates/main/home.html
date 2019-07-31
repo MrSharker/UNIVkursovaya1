@@ -1,0 +1,105 @@
+{% extends 'main/index.html' %}
+{% block main %}
+
+    <h1>Аэропорты</h1>
+                <table >
+                <tr align="center">
+                    <th>Название</th><th>Город</th><th>Рейсы</th>
+                </tr>
+             {% for airport in airports %}
+                            <tr align="center">
+                                <td>{{airport.name}}</td>
+                                <td>{{airport.city}}</td>
+                                <td>{% if airport.id == 1 %}<a href="#win1"><button class="btn btn-outline-info" type="submit" name="" value={{airport.city}} >Смотреть</button></a>{% endif %}
+                                    {% if airport.id == 2 %}<a href="#win2"><button class="btn btn-outline-info" type="submit" name="" value={{airport.city}} >Смотреть</button></a>{% endif %}
+                                    {% if airport.id == 3 %}<a href="#win3"><button class="btn btn-outline-info" type="submit" name="" value={{airport.city}} >Смотреть</button></a>{% endif %}</td>
+                            </tr>
+                {% endfor %}
+                </table>
+
+    <a href="#x" class="overlay" id="win1"></a>
+    <div class="popup">
+	<form action="#" method="POST">
+		{% csrf_token %}
+    <h1>Рейсы</h1>
+        <table align="center">
+    <tr align="center">
+        <th>№ рейса</th><th>Город вылета</th><th>Город прилета</th><th>Время отправления</th><th>Время прибытия</th><th>Время перелета</th><th>Самолет</th><th>Статус</th>
+    </tr>
+    {% for reis in reiss %}
+        {% if "Самара" == reis.cin or "Самара" == reis.cout %}
+    <tr align="center">
+        <td>{{reis.nom}}</td>
+        <td>{{reis.cout}}</td>
+        <td>{{reis.cin}}</td>
+        <td>{{reis.timeout}}</td>
+        <td>{{reis.timein}}</td>
+        <td>{{reis.timefly}}</td>
+        <td>{{reis.plane}}</td>
+        <td>{{reis.status}}</td>
+    </tr>
+        {% endif %}
+    {% endfor %}
+        </table>
+    </form>
+    <a class="close"title="Закрыть" href="#close"></a>
+    </div>
+
+
+    <a href="#x" class="overlay" id="win3"></a>
+    <div class="popup">
+	<form action="#" method="POST">
+		{% csrf_token %}
+    <h1>Рейсы</h1>
+        <table align="center">
+    <tr align="center">
+        <th>№ рейса</th><th>Город вылета</th><th>Город прилета</th><th>Время отправления</th><th>Время прибытия</th><th>Время перелета</th><th>Самолет</th><th>Статус</th>
+    </tr>
+    {% for reis in reiss %}
+        {% if "Москва" == reis.cin or "Москва" == reis.cout %}
+    <tr align="center">
+        <td>{{reis.nom}}</td>
+        <td>{{reis.cout}}</td>
+        <td>{{reis.cin}}</td>
+        <td>{{reis.timeout}}</td>
+        <td>{{reis.timein}}</td>
+        <td>{{reis.timefly}}</td>
+        <td>{{reis.plane}}</td>
+        <td>{{reis.status}}</td>
+    </tr>
+        {% endif %}
+    {% endfor %}
+        </table>
+    </form>
+    <a class="close"title="Закрыть" href="#close"></a>
+    </div>
+
+
+    <a href="#x" class="overlay" id="win2"></a>
+    <div class="popup">
+	<form action="#" method="POST">
+		{% csrf_token %}
+    <h1>Рейсы</h1>
+        <table align="center">
+    <tr align="center">
+        <th>№ рейса</th><th>Город вылета</th><th>Город прилета</th><th>Время отправления</th><th>Время прибытия</th><th>Время перелета</th><th>Самолет</th><th>Статус</th>
+    </tr>
+    {% for reis in reiss %}
+        {% if "Санкт-Петербург" == reis.cin or "Санкт-Петербург" == reis.cout %}
+    <tr align="center">
+        <td>{{reis.nom}}</td>
+        <td>{{reis.cout}}</td>
+        <td>{{reis.cin}}</td>
+        <td>{{reis.timeout}}</td>
+        <td>{{reis.timein}}</td>
+        <td>{{reis.timefly}}</td>
+        <td>{{reis.plane}}</td>
+        <td>{{reis.status}}</td>
+    </tr>
+        {% endif %}
+    {% endfor %}
+        </table>
+    </form>
+    <a class="close"title="Закрыть" href="#close"></a>
+    </div>
+{% endblock %}

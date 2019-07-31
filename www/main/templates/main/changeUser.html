@@ -1,0 +1,29 @@
+{% extends 'main/index.html' %}
+{% block main %}
+    <div style="width: 100%">
+	<h1>Управление пользователями</h1>
+    Здесь вы можете изменить данные о пользователях</br>
+    <form action="" method="POST">
+	{% csrf_token %}
+        <table  >
+    <tr align="center">
+        <th>Id</th><th>Login</th><th>Имя</th><th>Фамилия</th><th>Доступ</th></th><th></th>
+    </tr>
+    {% for user in users %}
+    <tr align="center">
+        <td>{{user.id}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.sername}}</td>
+        <td>{{user.group}}</td>
+        <td style="float: right">
+            <button class="btn btn-outline-info" type="submit" name="give_pas" value={{user.username}} >Пассажир</button>
+            <button class="btn btn-outline-info" type="submit" name="give_moderator" value={{user.username}} >Модератор</button>
+            <button class="btn btn-outline-info" type="submit" name="give_admin" value={{user.username}} >Админимтратор</button>
+            <button class="btn btn-outline-danger mb-1" type="submit" name="delete" value={{user.username}}>X</button></div></td>
+    </tr>
+    {% endfor %}
+    </table>
+ </form>
+    </div>
+{% endblock %}

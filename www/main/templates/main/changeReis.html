@@ -1,0 +1,50 @@
+{% extends 'main/index.html' %}
+{% load crispy_forms_tags %}
+{% block main %}
+	<h1>Управление рейсами</h1>
+    Здесь вы можете изменить данные о рейсах</br>
+
+       <table align="center">
+    <tr align="center">
+        <th>№ рейса</th><th>Город вылета</th><th>Город прилета</th><th>Время отправления</th><th>Время прибытия</th><th>Время перелета</th><th>Самолет</th><th>Статус</th><th>Действия</th>
+    </tr>
+    {% for reis in reiss %}
+    <tr align="center">
+        <td>{{reis.nom}}</td>
+        <td>{{reis.cout}}</td>
+        <td>{{reis.cin}}</td>
+        <td>{{reis.timeout}}</td>
+        <td>{{reis.timein}}</td>
+        <td>{{reis.timefly}}</td>
+        <td>{{reis.plane}}</td>
+        <td>{{reis.status}}</td>
+        <td><form action="#" method="POST">
+       {% csrf_token %}
+             <button class="btn btn-outline-danger mb-1" name="delete" value={{reis.nom}} >X</button>
+            </form></td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><div style="width: 50%; float: left; text-align: right;"><a href="#win1"><button class="btn btn-outline-info">Добавить</button></a></div></td>
+    </tr>
+    </table>
+<a href="#x" class="overlay" id="win1"></a>
+    <div class="popup">
+	<form action="#" method="POST">
+		{% csrf_token %}
+		{{ form|crispy }}
+		<div style="width: 100%;">
+				<a href="#close"><input type="submit" value="Создать" name="save" class="btn btn-outline-dark mt-2" style="float: right;"></a>
+			</div>
+		</form>
+    <a class="close"title="Закрыть" href="#close"></a>
+    </div>
+{% endblock %}
